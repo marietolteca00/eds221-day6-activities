@@ -1,0 +1,26 @@
+---
+title: "lobster_exploration"
+format: html
+---
+# Loading in libraries 
+```{r}
+library(tidyverse)
+library(here)
+library(janitor)
+library(dplyr)
+```
+
+# Reading in csv
+Read in and take a look at the data in the data/Lobster_Abundance_All_Years_20210412.csv file. *Take note of values that can be considered NA (see metadata)* and *update your import line to convert those to NA values*
+# Convert column names to lower snake case
+# Convert the data from frequency to case format using *dplyr::uncount()* on the existing count column. What did this do? Add annotation in your code explaining *dplyr::uncount()*
+```{r}
+lobster_data <- read.csv(here("data","Lobster_Abundance_All_Years_20210412.csv"), na= c("0", "-99999")) %>% # '0' does not count as a value when applying uncount()
+  clean_names() %>% # Convert column names to lower snake case
+  uncount(count) #removed the NA values
+
+
+```
+
+
+
